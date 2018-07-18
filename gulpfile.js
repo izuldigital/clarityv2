@@ -9,11 +9,10 @@ var reload      = browserSync.reload;
 
 
 // Copy Index
-gulp.task('index', function() {
-  return gulp.src('app/index.html')
+gulp.task('copyindex', function() {
+  return gulp.src('app/*.html')
   .pipe(gulp.dest('dist'))
 });
-
 
 // Copy Fonts
 gulp.task('fonts', function() {
@@ -72,7 +71,7 @@ gulp.task('browser-sync', function() {
 });
  
 // Default task to be run with `gulp`
-gulp.task('default', ['index', 'browser-sync', 'sass', 'concat', 'fonts', 'imagemin'], function () {
+gulp.task('default', ['sass', 'concat', 'fonts', 'copyindex', 'imagemin', 'browser-sync'], function () {
 //gulp.task('default', ['browser-sync', 'sass', 'concat','fonts', 'imagemin'], function () {
     gulp.watch("app/scss/**/*.scss", ['sass']);
     gulp.watch('app/*.html', browserSync.reload); 
